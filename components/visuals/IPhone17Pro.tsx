@@ -64,10 +64,10 @@ const DOCK_APPS: AppDef[] = [
 // Money buckets shown on the kid dashboard. Each carries a Penny character
 // illustration (artwork in /public/Penny) and its share of the total balance.
 const BUCKETS = [
-  { label: "Save", amount: "$20.00", pct: "42% of total", img: "/Penny/cheer.png", tint: "#f3ede0" },
-  { label: "Spend", amount: "$12.50", pct: "26% of total", img: "/Penny/coat.png", tint: "#efe6f3" },
-  { label: "Invest", amount: "$10.00", pct: "21% of total", img: "/Penny/grandpa.png", tint: "#e3eee6" },
-  { label: "Give", amount: "$5.00", pct: "11% of total", img: "/Penny/bear.png", tint: "#f6e8e2" },
+  { label: "Save", amount: "$20.00", pct: "42% of total", img: "/penny/cheer.png", tint: "#f3ede0" },
+  { label: "Spend", amount: "$12.50", pct: "26% of total", img: "/penny/coat.png", tint: "#efe6f3" },
+  { label: "Invest", amount: "$10.00", pct: "21% of total", img: "/penny/grandpa.png", tint: "#e3eee6" },
+  { label: "Give", amount: "$5.00", pct: "11% of total", img: "/penny/bear.png", tint: "#f6e8e2" },
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -247,7 +247,7 @@ function Dashboard() {
           </div>
           <span className="h-[12.5cqw] w-[12.5cqw] shrink-0 overflow-hidden rounded-full bg-[#1a1a1c] ring-[0.7cqw] ring-gold">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/Penny/cheer.png" alt="Mia" className="h-full w-full scale-[1.35] object-cover object-top" draggable={false} loading="lazy" />
+            <img src="/penny/cheer.png" alt="Mia" className="h-full w-full scale-[1.35] object-cover object-top" draggable={false} loading="lazy" />
           </span>
         </div>
 
@@ -259,7 +259,7 @@ function Dashboard() {
           {/* Penny — full height of the card, melted cleanly into the bright yellow with a left fade */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/Penny/face.png"
+            src="/penny/face.png"
             alt=""
             aria-hidden
             draggable={false}
@@ -311,7 +311,7 @@ function Dashboard() {
           <div className="mt-[6.6cqw] flex items-center gap-[3.8cqw] rounded-[4.5cqw] bg-[#161618] p-[4cqw] ring-1 ring-white/[0.08]">
           <span className="aspect-[851/566] w-[19.6cqw] shrink-0 overflow-hidden rounded-[2.2cqw] ring-1 ring-white/15">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/Penny-card.png" alt="Penny card" className="h-full w-full object-cover" draggable={false} loading="lazy" />
+            <img src="/penny-card.png" alt="Penny card" className="h-full w-full object-cover" draggable={false} loading="lazy" />
           </span>
           <div className="flex-1 leading-tight">
             <p className="font-sans text-[4.1cqw] font-bold text-white">{"Penny's Card"}</p>

@@ -232,7 +232,7 @@ export function HowItWorks() {
         {/* Penny face — top, slightly off-centre */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/illustrations/Penny-face.svg"
+          src="/illustrations/penny-face.svg"
           alt=""
           loading="lazy"
           className="absolute opacity-[0.10] mix-blend-multiply"
@@ -241,7 +241,7 @@ export function HowItWorks() {
         {/* Penny standing full body — lower third */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/illustrations/Penny-standing.svg"
+          src="/illustrations/penny-standing.svg"
           alt=""
           loading="lazy"
           className="absolute opacity-[0.12] mix-blend-multiply"
@@ -267,7 +267,7 @@ export function HowItWorks() {
         {/* Penny excited / waving — top */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/illustrations/Penny-excited.svg"
+          src="/illustrations/penny-excited.svg"
           alt=""
           loading="lazy"
           className="absolute opacity-[0.12] mix-blend-multiply"
@@ -285,7 +285,7 @@ export function HowItWorks() {
         {/* Penny standing — bottom, mirrored */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/illustrations/Penny-standing.svg"
+          src="/illustrations/penny-standing.svg"
           alt=""
           loading="lazy"
           className="absolute opacity-[0.09] mix-blend-multiply"

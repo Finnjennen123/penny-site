@@ -43,7 +43,7 @@ export default function RootLayout({
     <html lang="en" className={`${outfit.variable} ${quicksand.variable}`}>
       <head>
         {/* Preload the hero card image — it's the LCP element on most viewports */}
-        <link rel="preload" as="image" href="/Penny-card.png" fetchPriority="high" />
+        <link rel="preload" as="image" href="/penny-card.png" fetchPriority="high" />
         {/* Preload the Penny app icon used in both the phone and notifications */}
         <link rel="preload" as="image" href="/icon-512.png" />
       </head>
