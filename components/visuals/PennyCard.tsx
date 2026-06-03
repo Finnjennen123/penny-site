@@ -14,17 +14,18 @@ export function PennyCard({ className = "" }: PennyCardProps) {
   return (
     <div className={`relative aspect-[2187/1453] w-full ${className}`}>
       <Image
-        src="/penny-card.png"
+        src="/Penny-card.png"
         alt="Penny debit card"
         width={2187}
         height={1453}
         priority
-        quality={100}
+        quality={85}
         sizes="(min-width: 1024px) 560px, (min-width: 640px) 55vw, 85vw"
         className="h-full w-full object-contain"
         style={{
           filter:
             "drop-shadow(0 18px 36px rgba(20,30,30,0.40)) drop-shadow(0 4px 10px rgba(20,30,30,0.22))",
+          willChange: "transform",
         }}
       />
     </div>
@@ -74,12 +75,12 @@ export function PennyCardStack({ className = "" }: PennyCardProps) {
         style={{ filter: shadow }}
       >
         <Image
-          src="/penny-card.png"
+          src="/Penny-card.png"
           alt="Penny debit card"
           width={2187}
           height={1453}
           priority
-          quality={100}
+          quality={85}
           sizes="(min-width: 1024px) 420px, (min-width: 640px) 48vw, 72vw"
           className="block w-full h-auto"
         />

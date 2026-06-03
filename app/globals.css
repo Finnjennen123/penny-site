@@ -65,6 +65,12 @@
     text-rendering: optimizeLegibility;
   }
 
+  /* Suppress browser-default underline on all links — each component
+     re-applies hover underlines explicitly where desired. */
+  a {
+    text-decoration: none;
+  }
+
   ::selection {
     background-color: var(--color-gold);
     color: oklch(11.5% 0.022 255);

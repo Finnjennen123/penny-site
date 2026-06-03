@@ -29,7 +29,7 @@ export function Nav() {
       <nav className="mx-auto flex h-14 max-w-[1100px] items-center justify-between rounded-full border border-forest/10 bg-cream/80 px-4 pl-5 backdrop-blur-md sm:h-16 sm:pl-6">
         <a href="#top" className="flex items-center gap-2.5">
           <img
-            src="/penny-logo.svg"
+            src="/Penny-logo.svg"
             alt="Penny"
             className="h-9 w-auto sm:h-10"
           />
@@ -37,7 +37,7 @@ export function Nav() {
             className="text-[1.7rem] font-bold leading-none text-forest sm:text-[1.95rem]"
             style={{ fontFamily: "'Rosa Bright', var(--font-display), Georgia, serif" }}
           >
-            Penny
+            PENNI&apos;S
           </span>
         </a>
 
@@ -56,7 +56,7 @@ export function Nav() {
         <div className="flex items-center gap-2">
           <a
             href="#waitlist"
-            className="hidden rounded-full bg-gold px-5 py-2 font-sans text-sm font-bold text-forest transition-transform hover:scale-[1.03] sm:inline-block"
+            className="hidden no-underline rounded-full bg-gold px-5 py-2 font-sans text-sm font-bold text-forest transition-transform hover:scale-[1.03] sm:inline-block"
           >
             Join the waitlist
           </a>
@@ -82,12 +82,12 @@ export function Nav() {
           >
             <div className="flex h-14 items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <img src="/penny-logo.svg" alt="Penny" className="h-10 w-auto" />
+                <img src="/Penny-logo.svg" alt="Penny" className="h-10 w-auto" />
                 <span
                   className="text-[1.95rem] font-bold leading-none text-forest"
                   style={{ fontFamily: "'Rosa Bright', var(--font-display), Georgia, serif" }}
                 >
-                  Penny
+                  PENNI&apos;S
                 </span>
               </div>
               <button
@@ -122,7 +122,7 @@ export function Nav() {
             <a
               href="#waitlist"
               onClick={() => setOpen(false)}
-              className="mt-auto mb-8 rounded-full bg-gold px-6 py-4 text-center font-sans text-base font-bold text-forest"
+              className="mt-auto mb-8 no-underline rounded-full bg-gold px-6 py-4 text-center font-sans text-base font-bold text-forest"
             >
               Join the waitlist
             </a>

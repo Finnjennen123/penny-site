@@ -3,7 +3,7 @@ import path from "node:path";
 
 const SRC =
   "C:/Users/Gebruiker/Desktop/code/DSG Kids/Debit Card Design with Girl Photo (4).svg";
-const OUT = path.resolve("public/penny-card.png");
+const OUT = path.resolve("public/Penny-card.png");
 
 // 1) Rasterize the SVG to RGBA at high resolution so the card stays crisp on
 //    large and retina screens.

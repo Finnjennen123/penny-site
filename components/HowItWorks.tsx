@@ -7,9 +7,9 @@ import { HOW_IT_WORKS, STEPS } from "@/lib/content";
 // ─── Glass widget variants per step ──────────────────────────────────────────
 
 const GLASS: React.CSSProperties = {
-  background: "rgba(255,255,255,0.58)",
-  backdropFilter: "blur(28px) saturate(160%)",
-  WebkitBackdropFilter: "blur(28px) saturate(160%)",
+  background: "rgba(255,255,255,0.72)",
+  backdropFilter: "blur(14px) saturate(140%)",
+  WebkitBackdropFilter: "blur(14px) saturate(140%)",
   boxShadow: "0 8px 32px -8px rgba(0,0,0,0.18)",
 };
 
@@ -160,6 +160,7 @@ function StepCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.7, delay: 0, ease: [0.16, 1, 0.3, 1] }}
+      style={{ willChange: reduce ? undefined : "transform, opacity" }}
       className="overflow-hidden rounded-[2rem] border border-forest-deep/10 bg-white shadow-[0_28px_80px_-50px_oklch(0%_0_0_/_0.5)]"
     >
       <div className="grid min-h-[500px] lg:grid-cols-[1fr_1.15fr] lg:items-stretch">
@@ -231,16 +232,18 @@ export function HowItWorks() {
         {/* Penny face — top, slightly off-centre */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/illustrations/penny-face.svg"
+          src="/illustrations/Penny-face.svg"
           alt=""
+          loading="lazy"
           className="absolute opacity-[0.10] mix-blend-multiply"
           style={{ top: "6%", left: "50%", transform: "translateX(-60%) rotate(-4deg)", width: "clamp(90px, 55%, 140px)" }}
         />
         {/* Penny standing full body — lower third */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/illustrations/penny-standing.svg"
+          src="/illustrations/Penny-standing.svg"
           alt=""
+          loading="lazy"
           className="absolute opacity-[0.12] mix-blend-multiply"
           style={{ top: "48%", left: "50%", transform: "translateX(-45%) rotate(2deg)", width: "clamp(110px, 70%, 200px)" }}
         />
@@ -249,6 +252,7 @@ export function HowItWorks() {
         <img
           src="/illustrations/teddy.svg"
           alt=""
+          loading="lazy"
           className="absolute opacity-[0.09] mix-blend-multiply"
           style={{ bottom: "7%", left: "50%", transform: "translateX(-50%) rotate(-3deg)", width: "clamp(80px, 50%, 120px)" }}
         />
@@ -263,8 +267,9 @@ export function HowItWorks() {
         {/* Penny excited / waving — top */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/illustrations/penny-excited.svg"
+          src="/illustrations/Penny-excited.svg"
           alt=""
+          loading="lazy"
           className="absolute opacity-[0.12] mix-blend-multiply"
           style={{ top: "4%", left: "50%", transform: "translateX(-45%) rotate(3deg)", width: "clamp(100px, 65%, 170px)" }}
         />
@@ -273,14 +278,16 @@ export function HowItWorks() {
         <img
           src="/illustrations/mr-coin.svg"
           alt=""
+          loading="lazy"
           className="absolute opacity-[0.10] mix-blend-multiply"
           style={{ top: "38%", left: "50%", transform: "translateX(-55%) rotate(-2deg)", width: "clamp(100px, 65%, 165px)" }}
         />
         {/* Penny standing — bottom, mirrored */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/illustrations/penny-standing.svg"
+          src="/illustrations/Penny-standing.svg"
           alt=""
+          loading="lazy"
           className="absolute opacity-[0.09] mix-blend-multiply"
           style={{ bottom: "5%", left: "50%", transform: "translateX(-50%) scaleX(-1) rotate(1deg)", width: "clamp(90px, 58%, 150px)" }}
         />

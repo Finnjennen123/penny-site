@@ -74,7 +74,7 @@ export function BookBanner() {
             href="https://dsgkids.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group mt-3 inline-flex shrink-0 items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-5 py-2.5 font-sans text-sm font-bold text-gold transition-all duration-200 hover:border-gold/60 hover:bg-gold/20 sm:mt-0"
+            className="group no-underline mt-3 inline-flex shrink-0 items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-5 py-2.5 font-sans text-sm font-bold text-gold transition-all duration-200 hover:border-gold/60 hover:bg-gold/20 sm:mt-0"
           >
             Get the book
             <ArrowUpRight

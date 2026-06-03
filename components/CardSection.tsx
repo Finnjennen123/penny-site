@@ -87,7 +87,7 @@ export function CardSection() {
             whileHover={reduce ? undefined : { scale: 1.02 }}
             whileTap={reduce ? undefined : { scale: 0.97 }}
             transition={{ duration: 0.2, ease: EASE_OUT_STRONG }}
-            className="group mt-9 inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 font-sans text-base font-bold text-forest-deep shadow-[0_8px_30px_-8px_oklch(80%_0.17_82_/_0.5)]"
+            className="group no-underline mt-9 inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 font-sans text-base font-bold text-forest-deep shadow-[0_8px_30px_-8px_rgba(198,158,41,0.5)]"
           >
             {CARD_SECTION.cta}
             <ArrowRight
@@ -108,7 +108,7 @@ export function CardSection() {
             viewport={inView}
             transition={{ type: "spring", stiffness: 130, damping: 16 }}
             className="w-full max-w-xl [transform-style:preserve-3d]"
-            style={reduce ? undefined : { rotateX, rotateY }}
+            style={reduce ? undefined : { rotateX, rotateY, willChange: "transform" }}
           >
             <PennyCardStack />
           </motion.div>

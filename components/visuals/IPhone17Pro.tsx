@@ -31,12 +31,12 @@ type Phase = (typeof SEQUENCE)[number]["phase"];
 // iOS-style push spring (screen slide).
 const PUSH = { type: "spring", stiffness: 260, damping: 30 } as const;
 
-type AppDef = { id: string; name: string; src?: string; penny?: boolean };
+type AppDef = { id: string; name: string; src?: string; Penny?: boolean };
 
 // Real iOS app icons (artwork pulled from the App Store into /public/app-icons).
-// Penny is our own brand tile and is the tap target (id: "penny").
+// Penny is our own brand tile and is the tap target (id: "Penny").
 const HOME_APPS: AppDef[] = [
-  { id: "penny", name: "Penny", penny: true },
+  { id: "Penny", name: "Penny", Penny: true },
   { id: "instagram", name: "Instagram", src: "/app-icons/instagram.png" },
   { id: "tiktok", name: "TikTok", src: "/app-icons/tiktok.png" },
   { id: "snapchat", name: "Snapchat", src: "/app-icons/snapchat.png" },
@@ -62,12 +62,12 @@ const DOCK_APPS: AppDef[] = [
 ];
 
 // Money buckets shown on the kid dashboard. Each carries a Penny character
-// illustration (artwork in /public/penny) and its share of the total balance.
+// illustration (artwork in /public/Penny) and its share of the total balance.
 const BUCKETS = [
-  { label: "Save", amount: "$20.00", pct: "42% of total", img: "/penny/cheer.png", tint: "#f3ede0" },
-  { label: "Spend", amount: "$12.50", pct: "26% of total", img: "/penny/coat.png", tint: "#efe6f3" },
-  { label: "Invest", amount: "$10.00", pct: "21% of total", img: "/penny/grandpa.png", tint: "#e3eee6" },
-  { label: "Give", amount: "$5.00", pct: "11% of total", img: "/penny/bear.png", tint: "#f6e8e2" },
+  { label: "Save", amount: "$20.00", pct: "42% of total", img: "/Penny/cheer.png", tint: "#f3ede0" },
+  { label: "Spend", amount: "$12.50", pct: "26% of total", img: "/Penny/coat.png", tint: "#efe6f3" },
+  { label: "Invest", amount: "$10.00", pct: "21% of total", img: "/Penny/grandpa.png", tint: "#e3eee6" },
+  { label: "Give", amount: "$5.00", pct: "11% of total", img: "/Penny/bear.png", tint: "#f6e8e2" },
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -79,7 +79,7 @@ const TILE =
   "relative h-full w-full overflow-hidden rounded-[22.5%] shadow-[inset_0_0_0_0.4cqw_rgba(255,255,255,0.08)]";
 
 function IconArt({ app }: { app: AppDef }) {
-  if (app.penny) {
+  if (app.Penny) {
     return (
       <div className={TILE} style={{ background: "oklch(81% 0.16 82)" }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -88,6 +88,7 @@ function IconArt({ app }: { app: AppDef }) {
           alt="Penny"
           className="h-full w-full object-cover"
           draggable={false}
+          loading="eager"
         />
       </div>
     );
@@ -95,7 +96,15 @@ function IconArt({ app }: { app: AppDef }) {
   return (
     <div className={TILE}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={app.src} alt={app.name} className="h-full w-full object-cover" draggable={false} />
+      <img
+        src={app.src}
+        alt={app.name}
+        className="h-full w-full object-cover"
+        draggable={false}
+        loading="lazy"
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        fetchPriority={"low" as any}
+      />
     </div>
   );
 }
@@ -153,19 +162,26 @@ function StatusBar({ tone }: { tone: "light" | "dark" }) {
 
 function HomeScreen({
   pressPenny,
-  pennyRef,
+  PennyRef,
 }: {
   pressPenny: boolean;
-  pennyRef: React.Ref<HTMLDivElement>;
+  PennyRef: React.Ref<HTMLDivElement>;
 }) {
   return (
     <div className="relative h-full w-full overflow-hidden">
-      {/* abstract wallpaper */}
-      <div className="absolute inset-0 bg-[#0a1f15]" />
-      <div className="absolute -left-[20%] -top-[10%] h-[70%] w-[80%] rounded-full bg-[#1f7a4d] opacity-70 blur-3xl" />
-      <div className="absolute right-[-25%] top-[18%] h-[60%] w-[70%] rounded-full bg-[#caa14a] opacity-40 blur-3xl" />
-      <div className="absolute bottom-[-10%] left-[10%] h-[55%] w-[75%] rounded-full bg-[#1b8a8a] opacity-35 blur-3xl" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30" />
+      {/* abstract wallpaper — single CSS gradient replaces 3 blur-3xl layers */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: [
+            "radial-gradient(ellipse 80% 70% at -5% 0%, rgba(31,122,77,0.65), transparent 55%)",
+            "radial-gradient(ellipse 70% 60% at 115% 28%, rgba(202,161,74,0.35), transparent 50%)",
+            "radial-gradient(ellipse 75% 55% at 25% 115%, rgba(27,138,138,0.3), transparent 50%)",
+            "linear-gradient(to bottom, transparent 70%, rgba(0,0,0,0.3) 100%)",
+            "#0a1f15",
+          ].join(", "),
+        }}
+      />
 
       <div className="relative flex h-full flex-col px-[5cqw] pb-[4cqw] pt-[15cqw]">
         <div className="grid grid-cols-4 gap-x-[2.2cqw] gap-y-[2.8cqw]">
@@ -173,8 +189,8 @@ function HomeScreen({
             <AppIcon
               key={app.id}
               app={app}
-              pressed={app.id === "penny" && pressPenny}
-              innerRef={app.id === "penny" ? pennyRef : undefined}
+              pressed={app.id === "Penny" && pressPenny}
+              innerRef={app.id === "Penny" ? PennyRef : undefined}
             />
           ))}
         </div>
@@ -182,7 +198,7 @@ function HomeScreen({
         <div className="mb-[3cqw] mt-auto flex items-center justify-center">
           <div
             className="flex items-center gap-[1.6cqw] rounded-full px-[4cqw] py-[1.6cqw]"
-            style={{ background: "rgba(255,255,255,0.18)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}
+            style={{ background: "rgba(255,255,255,0.18)", backdropFilter: "blur(5px)", WebkitBackdropFilter: "blur(5px)" }}
           >
             <MagnifyingGlass weight="bold" className="h-[3.4cqw] w-[3.4cqw] text-white" />
             <span className="font-sans text-[3cqw] font-medium text-white/90">Search</span>
@@ -191,7 +207,7 @@ function HomeScreen({
 
         <div
           className="flex items-center justify-around rounded-[8cqw] px-[3cqw] py-[3cqw]"
-          style={{ background: "rgba(255,255,255,0.16)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}
+          style={{ background: "rgba(255,255,255,0.16)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}
         >
           {DOCK_APPS.map((app) => (
             <div key={app.id} className="w-[17cqw]">
@@ -231,7 +247,7 @@ function Dashboard() {
           </div>
           <span className="h-[12.5cqw] w-[12.5cqw] shrink-0 overflow-hidden rounded-full bg-[#1a1a1c] ring-[0.7cqw] ring-gold">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/penny/cheer.png" alt="Mia" className="h-full w-full scale-[1.35] object-cover object-top" draggable={false} />
+            <img src="/Penny/cheer.png" alt="Mia" className="h-full w-full scale-[1.35] object-cover object-top" draggable={false} loading="lazy" />
           </span>
         </div>
 
@@ -243,10 +259,11 @@ function Dashboard() {
           {/* Penny — full height of the card, melted cleanly into the bright yellow with a left fade */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/penny/face.png"
+            src="/Penny/face.png"
             alt=""
             aria-hidden
             draggable={false}
+            loading="lazy"
             className="pointer-events-none absolute inset-y-0 right-[-3cqw] h-full w-auto select-none object-cover object-center"
             style={{
               mixBlendMode: "multiply",
@@ -291,10 +308,10 @@ function Dashboard() {
         </div>
 
         {/* Penny's card */}
-        <div className="mt-[6.6cqw] flex items-center gap-[3.8cqw] rounded-[4.5cqw] bg-[#161618] p-[4cqw] ring-1 ring-white/[0.08]">
+          <div className="mt-[6.6cqw] flex items-center gap-[3.8cqw] rounded-[4.5cqw] bg-[#161618] p-[4cqw] ring-1 ring-white/[0.08]">
           <span className="aspect-[851/566] w-[19.6cqw] shrink-0 overflow-hidden rounded-[2.2cqw] ring-1 ring-white/15">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/penny-card.png" alt="Penny card" className="h-full w-full object-cover" draggable={false} />
+            <img src="/Penny-card.png" alt="Penny card" className="h-full w-full object-cover" draggable={false} loading="lazy" />
           </span>
           <div className="flex-1 leading-tight">
             <p className="font-sans text-[4.1cqw] font-bold text-white">{"Penny's Card"}</p>
@@ -357,6 +374,7 @@ function BucketCard({
         alt=""
         aria-hidden
         draggable={false}
+        loading="lazy"
         className={
           tall
             ? "pointer-events-none absolute -bottom-[3cqw] left-1/2 w-[34cqw] -translate-x-1/2 select-none object-contain"
@@ -430,7 +448,7 @@ export function IPhone17Pro({
   const showHome = phase === "home" || phase === "tap";
   const showApp = phase === "app";
 
-  const pennyRef = useRef<HTMLDivElement>(null);
+  const PennyRef = useRef<HTMLDivElement>(null);
 
   const px = useMotionValue(0);
   const py = useMotionValue(0);
@@ -474,7 +492,7 @@ export function IPhone17Pro({
 
       <div className="relative w-full">
         <motion.div
-          style={bodyMotion ? { rotateX, rotateY, transformStyle: "preserve-3d" } : undefined}
+          style={bodyMotion ? { rotateX, rotateY, transformStyle: "preserve-3d", willChange: "transform" } : undefined}
           className="relative w-full"
         >
           {/* side buttons */}
@@ -511,6 +529,7 @@ export function IPhone17Pro({
                 clipPath: "inset(0 round 14.4% / 6.3%)",
                 WebkitClipPath: "inset(0 round 14.4% / 6.3%)",
                 backfaceVisibility: "hidden",
+                contain: "layout paint",
               }}
             >
                 <StatusBar tone="light" />
@@ -529,7 +548,7 @@ export function IPhone17Pro({
                       }}
                       transformTemplate={(_, generated) => `${generated} translateZ(0)`}
                     >
-                      <HomeScreen pressPenny={phase === "tap"} pennyRef={pennyRef} />
+                      <HomeScreen pressPenny={phase === "tap"} PennyRef={PennyRef} />
                     </motion.div>
                   )}
                   {showApp && (

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   AnimatePresence,
   motion,
@@ -10,7 +10,7 @@ import {
   useReducedMotion,
   type Variants,
 } from "motion/react";
-import { ArrowRight, Users, Buildings, GraduationCap } from "@phosphor-icons/react";
+import { ArrowRight, Users, Buildings, GraduationCap, CheckCircle, Spinner } from "@phosphor-icons/react";
 import { HERO } from "@/lib/content";
 import { EASE_OUT_STRONG } from "@/lib/easing";
 import { PennyCard } from "./visuals/PennyCard";
@@ -51,9 +51,14 @@ const TRUST_ITEMS = [
 ];
 const WORD_INTERVAL_MS = 2800;
 
+type FormState = "idle" | "open" | "loading" | "success";
+
 export function Hero() {
   const reduce = useReducedMotion();
   const [wordIndex, setWordIndex] = useState(0);
+  const [formState, setFormState] = useState<FormState>("idle");
+  const [email, setEmail] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
   const activeWord = HERO.rotatingWords[wordIndex] ?? HERO.rotatingWords[0];
   const longestWord = HERO.rotatingWords.reduce((longest, word) =>
     word.length > longest.length ? word : longest
@@ -87,6 +92,22 @@ export function Hero() {
   function handlePointerLeave() {
     px.set(0);
     py.set(0);
+  }
+
+  function openForm(e: React.MouseEvent) {
+    e.preventDefault();
+    setFormState("open");
+    // Focus the input on next tick after AnimatePresence mounts it
+    setTimeout(() => inputRef.current?.focus(), 80);
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!email || formState === "loading") return;
+    setFormState("loading");
+    // Simulate async submit — swap for real endpoint
+    await new Promise((r) => setTimeout(r, 1100));
+    setFormState("success");
   }
 
   return (
@@ -163,29 +184,96 @@ export function Hero() {
             {HERO.sub}
           </motion.p>
 
-          <motion.div variants={copyItem} className="mt-9 flex flex-wrap items-center gap-3">
-            <motion.a
-              href="#waitlist"
-              whileHover={reduce ? undefined : { scale: 1.02 }}
-              whileTap={reduce ? undefined : { scale: 0.97 }}
-              transition={{ duration: 0.2, ease: EASE_OUT_STRONG }}
-              className="group inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 font-sans text-base font-bold text-forest-deep shadow-[0_8px_30px_-8px_oklch(80%_0.17_82_/_0.75)]"
-            >
-              {HERO.primaryCta}
-              <ArrowRight
-                weight="bold"
-                className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
-              />
-            </motion.a>
-            <motion.a
-              href="#how-it-works"
-              whileHover={reduce ? undefined : { scale: 1.02 }}
-              whileTap={reduce ? undefined : { scale: 0.97 }}
-              transition={{ duration: 0.2, ease: EASE_OUT_STRONG }}
-              className="inline-flex items-center rounded-full border border-forest/25 bg-card/70 px-7 py-3.5 font-sans text-base font-semibold text-forest backdrop-blur-sm"
-            >
-              {HERO.secondaryCta}
-            </motion.a>
+          <motion.div variants={copyItem} className="mt-9">
+            <AnimatePresence mode="wait" initial={false}>
+              {formState === "idle" ? (
+                <motion.div
+                  key="buttons"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.28, ease: EASE_OUT_STRONG }}
+                  className="flex flex-wrap items-center gap-3"
+                >
+                  <motion.button
+                    onClick={openForm}
+                    whileHover={reduce ? undefined : { scale: 1.02 }}
+                    whileTap={reduce ? undefined : { scale: 0.97 }}
+                    transition={{ duration: 0.2, ease: EASE_OUT_STRONG }}
+                    className="group no-underline inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 font-sans text-base font-bold text-forest-deep shadow-[0_8px_30px_-8px_rgba(198,158,41,0.75)]"
+                  >
+                    {HERO.primaryCta}
+                    <ArrowRight
+                      weight="bold"
+                      className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+                    />
+                  </motion.button>
+                  <motion.button
+                    onClick={openForm}
+                    whileHover={reduce ? undefined : { scale: 1.02 }}
+                    whileTap={reduce ? undefined : { scale: 0.97 }}
+                    transition={{ duration: 0.2, ease: EASE_OUT_STRONG }}
+                    className="inline-flex items-center rounded-full border border-forest/25 bg-card/70 px-7 py-3.5 font-sans text-base font-semibold text-forest backdrop-blur-sm"
+                  >
+                    {HERO.secondaryCta}
+                  </motion.button>
+                </motion.div>
+              ) : formState === "success" ? (
+                <motion.div
+                  key="success"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.35, ease: EASE_OUT_STRONG }}
+                  className="flex items-center gap-3 rounded-full border border-forest/20 bg-forest/5 px-6 py-3.5"
+                >
+                  <CheckCircle weight="fill" className="h-5 w-5 shrink-0 text-forest" />
+                  <span className="font-sans text-base font-semibold text-forest-deep">
+                    You&apos;re on the list — we&apos;ll be in touch!
+                  </span>
+                </motion.div>
+              ) : (
+                <motion.form
+                  key="form"
+                  onSubmit={handleSubmit}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.28, ease: EASE_OUT_STRONG }}
+                  className="flex w-full max-w-md items-center rounded-full border border-forest/20 bg-card/80 pl-5 pr-1.5 py-1.5 shadow-sm backdrop-blur-sm focus-within:border-forest/50 focus-within:ring-2 focus-within:ring-forest/15"
+                >
+                  <input
+                    ref={inputRef}
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email…"
+                    disabled={formState === "loading"}
+                    className="min-w-0 flex-1 bg-transparent font-sans text-base text-forest-deep placeholder:text-muted-foreground/60 focus:outline-none disabled:opacity-50"
+                  />
+                  <motion.button
+                    type="submit"
+                    disabled={formState === "loading"}
+                    whileHover={reduce || formState === "loading" ? undefined : { scale: 1.03 }}
+                    whileTap={reduce || formState === "loading" ? undefined : { scale: 0.96 }}
+                    transition={{ duration: 0.18, ease: EASE_OUT_STRONG }}
+                    className="inline-flex shrink-0 items-center gap-2 rounded-full bg-gold px-6 py-2.5 font-sans text-sm font-bold text-forest-deep shadow-[0_4px_18px_-6px_rgba(198,158,41,0.7)] disabled:opacity-60"
+                  >
+                    {formState === "loading" ? (
+                      <>
+                        <Spinner weight="bold" className="h-4 w-4 animate-spin" />
+                        Joining…
+                      </>
+                    ) : (
+                      <>
+                        Join waitlist
+                        <ArrowRight weight="bold" className="h-4 w-4" />
+                      </>
+                    )}
+                  </motion.button>
+                </motion.form>
+              )}
+            </AnimatePresence>
           </motion.div>
 
           {/* Trust micro-stats */}
@@ -252,6 +340,7 @@ export function Hero() {
                       rotateY: cardRotateY,
                       x: cardShiftX,
                       transformStyle: "preserve-3d",
+                      willChange: "transform",
                     }
               }
             >

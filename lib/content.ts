@@ -184,7 +184,7 @@ export const TESTIMONIALS = [
   },
   {
     quote:
-      "Worth every penny. My kids started a lemonade stand the weekend after we read it.",
+      "Worth every Penny. My kids started a lemonade stand the weekend after we read it.",
     name: "David Kim",
     role: "Dad of two",
   },
@@ -292,7 +292,7 @@ export const WHY_FEATURES = [
     iconColor: "text-cream",
   },
   {
-    title: "Schools don't teach this",
+    title: "Schools don't teach financial literacy",
     body: "73% of teens graduate without a single personal finance class. Where exactly are they supposed to learn?",
     chipColor: "bg-sky/20",
     iconColor: "text-cream",

@@ -7,7 +7,6 @@ import { ParentSection } from "@/components/ParentSection";
 import { FourPockets } from "@/components/FourPockets";
 import { CardSection } from "@/components/CardSection";
 import { Testimonials } from "@/components/Testimonials";
-import { Waitlist } from "@/components/Waitlist";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -23,7 +22,6 @@ export default function Home() {
         <FourPockets />
         <CardSection />
         <Testimonials />
-        <Waitlist />
       </main>
       <Footer />
     </>

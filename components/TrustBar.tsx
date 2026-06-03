@@ -68,7 +68,7 @@ export function TrustBar() {
           {/* Book cover */}
           <div
             className="relative shrink-0"
-            style={{ filter: "drop-shadow(0 4px 12px oklch(0% 0 0 / 0.18))" }}
+            style={{ filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.18))" }}
           >
             <Image
               src="/book-cover.png"
@@ -96,7 +96,7 @@ export function TrustBar() {
             href="https://dsgkids.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group ml-auto shrink-0 inline-flex items-center gap-1.5 rounded-full border border-forest/15 bg-transparent px-4 py-2 font-sans text-xs font-bold text-forest/60 transition-all duration-200 hover:border-forest/30 hover:bg-forest/5 hover:text-forest-deep"
+            className="group no-underline ml-auto shrink-0 inline-flex items-center gap-1.5 rounded-full border border-forest/15 bg-transparent px-4 py-2 font-sans text-xs font-bold text-forest/60 transition-all duration-200 hover:border-forest/30 hover:bg-forest/5 hover:text-forest-deep"
           >
             Get the book
             <ArrowUpRight

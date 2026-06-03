@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 // Waitlist intake. For now it validates and logs the signup so the flow works
 // end to end. Wire this to Resend / Supabase / Mailchimp when Miller picks the
-// email backend (see PENNY-SITE.md open decisions).
+// email backend (see Penny-SITE.md open decisions).
 export async function POST(request: Request) {
   let email: unknown;
   try {

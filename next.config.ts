@@ -7,8 +7,7 @@ const nextConfig: NextConfig = {
     root: __dirname,
   },
   images: {
-    // Allow full-quality serving for the crisp card artwork.
-    qualities: [75, 100],
+    qualities: [75, 85, 90],
   },
 };
 

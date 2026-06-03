@@ -12,9 +12,9 @@ import { EASE_OUT_STRONG, inView } from "@/lib/easing";
 /* ────────────────────────────────────────────────────────── */
 
 const NOTIF: React.CSSProperties = {
-  background: "rgba(29,29,31,0.84)",
-  backdropFilter: "blur(24px)",
-  WebkitBackdropFilter: "blur(24px)",
+  background: "rgba(29,29,31,0.88)",
+  backdropFilter: "blur(14px)",
+  WebkitBackdropFilter: "blur(14px)",
   border: "1px solid rgba(255,255,255,0.08)",
   boxShadow: "0 8px 28px -6px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.06)",
 };
@@ -26,10 +26,11 @@ function NotifHeader({ time }: { time: string }) {
       <img
         src="/icon-512.png"
         alt=""
+        loading="lazy"
         className="h-[18px] w-[18px] shrink-0 overflow-hidden rounded-[4px] object-cover"
       />
       <span className="font-sans text-[10.5px] font-semibold tracking-[0.08em] text-cream/30">
-        PENNY
+        Penny
       </span>
       <span className="ml-auto font-sans text-[10.5px] text-cream/20">{time}</span>
     </div>
@@ -215,7 +216,7 @@ function CompoundChart() {
           Save <span style={{ color: "rgba(255,255,255,0.8)", fontWeight: 600 }}>${WEEKLY}/week</span> from age 10.
         </p>
         <p className="mt-1 font-display text-[26px] font-extrabold leading-tight tracking-tight text-white">
-          ${TOTAL_WITH_INTEREST.toLocaleString()}
+          ${TOTAL_WITH_INTEREST.toLocaleString('en-US')}
           <span className="ml-2 font-sans text-[13px] font-normal" style={{ color: "rgba(255,255,255,0.35)" }}>by age 20</span>
         </p>
       </div>
@@ -354,7 +355,7 @@ function CompoundChart() {
             You put in
           </span>
           <span className="font-display text-[17px] font-extrabold text-white">
-            ${TOTAL_CONTRIBUTED.toLocaleString()}
+            ${TOTAL_CONTRIBUTED.toLocaleString('en-US')}
           </span>
         </div>
         <div
@@ -365,7 +366,7 @@ function CompoundChart() {
             Interest earned
           </span>
           <span className="font-display text-[17px] font-extrabold" style={{ color: "#34c759" }}>
-            +${INTEREST_EARNED.toLocaleString()}
+            +${INTEREST_EARNED.toLocaleString('en-US')}
           </span>
         </div>
       </div>
