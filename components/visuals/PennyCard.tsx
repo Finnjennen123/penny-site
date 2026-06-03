@@ -14,7 +14,7 @@ export function PennyCard({ className = "" }: PennyCardProps) {
   return (
     <div className={`relative aspect-[2187/1453] w-full ${className}`}>
       <Image
-        src="/Penny-card.png"
+        src="/penny-card.png"
         alt="Penny debit card"
         width={2187}
         height={1453}
@@ -75,7 +75,7 @@ export function PennyCardStack({ className = "" }: PennyCardProps) {
         style={{ filter: shadow }}
       >
         <Image
-          src="/Penny-card.png"
+          src="/penny-card.png"
           alt="Penny debit card"
           width={2187}
           height={1453}

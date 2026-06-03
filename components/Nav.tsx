@@ -29,7 +29,7 @@ export function Nav() {
       <nav className="mx-auto flex h-14 max-w-[1100px] items-center justify-between rounded-full border border-forest/10 bg-cream/80 px-4 pl-5 backdrop-blur-md sm:h-16 sm:pl-6">
         <a href="#top" className="flex items-center gap-2.5">
           <img
-            src="/Penny-logo.svg"
+            src="/penny-logo.svg"
             alt="Penny"
             className="h-9 w-auto sm:h-10"
           />
@@ -82,7 +82,7 @@ export function Nav() {
           >
             <div className="flex h-14 items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <img src="/Penny-logo.svg" alt="Penny" className="h-10 w-auto" />
+                <img src="/penny-logo.svg" alt="Penny" className="h-10 w-auto" />
                 <span
                   className="text-[1.95rem] font-bold leading-none text-forest"
                   style={{ fontFamily: "'Rosa Bright', var(--font-display), Georgia, serif" }}
