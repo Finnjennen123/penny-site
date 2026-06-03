@@ -1,0 +1,8 @@
+⨯ Another next dev server is already running.
+
+- Local:        http://localhost:3010
+- PID:          8380
+- Dir:          C:\Users\Gebruiker\Desktop\code\DSG Kids\penny-site
+- Log:          .next\dev\logs\next-development.log
+
+Run taskkill /PID 8380 /F to stop it.

@@ -1,26 +1,132 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: "Rosa Bright";
+  src:
+    local("Rosa Bright"),
+    local("RosaBright"),
+    url("/fonts/RosaBright.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  /* ── Surfaces ─────────────────────────────────────────── */
+  --color-cream: oklch(99.5% 0.004 95);
+  --color-cream-deep: oklch(97% 0.009 95);
+
+  /* ── Brand green — rich emerald (upgraded from muted forest) ── */
+  --color-forest: oklch(44% 0.155 155);
+
+  /* ── Dark sections — deep ink navy, not dark green ── */
+  --color-forest-deep: oklch(11.5% 0.022 255);
+
+  /* ── Gold / CTA ────────────────────────────────────────── */
+  --color-gold: oklch(80% 0.17 82);
+  --color-gold-soft: oklch(93% 0.09 86);
+
+  /* ── Extended accent palette ───────────────────────────── */
+  --color-teal: oklch(66% 0.12 195);
+  --color-coral: oklch(70% 0.17 30);
+  --color-violet: oklch(60% 0.21 285);
+  --color-sky: oklch(68% 0.14 220);
+  --color-amber: oklch(78% 0.15 72);
+
+  /* ── UI tokens ─────────────────────────────────────────── */
+  --color-card: oklch(100% 0 0);
+  --color-muted: oklch(97% 0.009 95);
+  --color-muted-foreground: oklch(43% 0.03 245);
+  --color-line: oklch(91% 0.012 95);
+
+  /* ── Fonts ─────────────────────────────────────────────── */
+  --font-display: var(--font-outfit);
+  --font-sans: var(--font-quicksand);
+
+  /* ── Radii ─────────────────────────────────────────────── */
+  --radius-brand: 1rem;
+  --radius-brand-lg: 1.5rem;
+
+  /* ── Easing ────────────────────────────────────────────── */
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-forest);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-gold);
+    color: oklch(11.5% 0.022 255);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Clean neutral card elevation */
+.quote-card {
+  box-shadow:
+    0 1px 3px -1px oklch(0% 0 0 / 0.06),
+    0 6px 24px -6px oklch(0% 0 0 / 0.09);
+}
+
+/* Subtle dot-grid pattern — adds visual texture to hero / feature sections */
+.dot-grid {
+  background-image: radial-gradient(
+    circle,
+    oklch(44% 0.155 155 / 0.11) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+}
+
+/* Gradient text — use on headline accent words */
+.gradient-text {
+  background: linear-gradient(125deg, oklch(44% 0.155 155) 0%, oklch(60% 0.21 285) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Marquee animations ─────────────────────────────────── */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 40s linear infinite;
+}
+.marquee-track-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 36s linear infinite;
+}
+.marquee-wrapper:hover .marquee-track,
+.marquee-wrapper:hover .marquee-track-reverse {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee-track,
+  .marquee-track-reverse {
+    animation: none;
+  }
 }
