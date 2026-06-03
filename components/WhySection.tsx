@@ -25,6 +25,7 @@ function ProblemRow({
       }`}
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
+      onClick={() => setOpen((v) => !v)}
       onFocus={() => setOpen(true)}
       onBlur={() => setOpen(false)}
       onKeyDown={(e) => {

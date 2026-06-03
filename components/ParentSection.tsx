@@ -525,7 +525,7 @@ export function ParentSection() {
               whileInView={reduce ? undefined : { opacity: 1, scale: 1 }}
               viewport={inView}
               transition={{ type: "spring", stiffness: 130, damping: 18, delay: 0.1 }}
-              className="w-full max-w-[210px] shrink-0"
+              className="w-full max-w-[210px] shrink-0 mx-auto lg:mx-0"
             >
               <IPhone17Pro autoPlay enableBodyMotion={false} />
             </motion.div>

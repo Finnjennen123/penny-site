@@ -161,6 +161,7 @@ function PocketCard({
        */
       onMouseEnter={() => { if (!reduce) setFlipped(true); }}
       onMouseLeave={() => setFlipped(false)}
+      onClick={() => setFlipped((v) => !v)}
       className={`group relative min-h-[280px] w-full min-w-0 cursor-pointer rounded-brand-lg border border-forest/10 ${s.cell} ${s.shadow} ${
         big ? "lg:min-h-[560px]" : "lg:min-h-[260px]"
       }`}

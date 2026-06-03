@@ -194,7 +194,7 @@ function StepCard({
         </div>
 
         {/* ── Right: image + glass widget ── */}
-        <div className="relative min-h-[340px] overflow-hidden lg:rounded-r-[2rem]">
+        <div className="relative min-h-[280px] overflow-hidden rounded-b-[2rem] lg:rounded-b-none lg:rounded-r-[2rem]">
           <Image
             src={step.image}
             alt={step.title}

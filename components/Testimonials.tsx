@@ -213,11 +213,11 @@ export function Testimonials() {
           <div className="relative overflow-hidden">
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r from-cream to-transparent"
+              className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 sm:w-20 bg-gradient-to-r from-cream to-transparent"
             />
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l from-cream to-transparent"
+              className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 sm:w-20 bg-gradient-to-l from-cream to-transparent"
             />
             <div className="marquee-track py-2">
               {[...ROW_A, ...ROW_A].map((t, i) => (
@@ -230,11 +230,11 @@ export function Testimonials() {
           <div className="relative mt-3 overflow-hidden">
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r from-cream to-transparent"
+              className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 sm:w-20 bg-gradient-to-r from-cream to-transparent"
             />
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l from-cream to-transparent"
+              className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 sm:w-20 bg-gradient-to-l from-cream to-transparent"
             />
             <div className="marquee-track-reverse py-2">
               {[...ROW_B, ...ROW_B].map((t, i) => (

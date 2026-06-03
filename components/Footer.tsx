@@ -33,15 +33,15 @@ const LINES = [
   {
     text: "money",
     align: "self-end",
-    size: "text-[clamp(5rem,16.5vw,19rem)]",
+    size: "text-[clamp(4rem,16.5vw,19rem)]",
     weight: "font-extrabold",
     color: "text-cream",
-    pt: "mt-[-2rem]",
+    pt: "mt-[-0.5rem] sm:mt-[-2rem]",
   },
   {
     text: "conversation",
     align: "self-start",
-    size: "text-[clamp(1.75rem,4.5vw,5.25rem)]",
+    size: "text-[clamp(1.5rem,4.5vw,5.25rem)]",
     weight: "font-bold",
     color: "text-cream/40",
     pt: "pt-1",
@@ -49,7 +49,7 @@ const LINES = [
   {
     text: "before the",
     align: "self-end",
-    size: "text-[clamp(2.75rem,7.8vw,9rem)]",
+    size: "text-[clamp(2rem,7.8vw,9rem)]",
     weight: "font-extrabold",
     color: "text-cream",
     pt: "pt-2",
@@ -57,7 +57,7 @@ const LINES = [
   {
     text: "world does.",
     align: "self-start",
-    size: "text-[clamp(2.75rem,7.8vw,9rem)]",
+    size: "text-[clamp(2rem,7.8vw,9rem)]",
     weight: "font-extrabold",
     color: "text-gold",
     pt: "",
