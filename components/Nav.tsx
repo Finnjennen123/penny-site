@@ -37,7 +37,7 @@ export function Nav() {
             className="text-[1.7rem] font-bold leading-none text-forest sm:text-[1.95rem]"
             style={{ fontFamily: "'Rosa Bright', var(--font-display), Georgia, serif" }}
           >
-            PENNI&apos;S
+            PENNY
           </span>
         </a>
 
@@ -87,7 +87,7 @@ export function Nav() {
                   className="text-[1.95rem] font-bold leading-none text-forest"
                   style={{ fontFamily: "'Rosa Bright', var(--font-display), Georgia, serif" }}
                 >
-                  PENNI&apos;S
+                  PENNY
                 </span>
               </div>
               <button
